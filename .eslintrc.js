@@ -1,23 +1,33 @@
 // https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
-  root: true,
-  parserOptions: {
-    parser: 'babel-eslint'
+  "env": {
+    "browser": true,
+    "es6": true
   },
-  env: {
-    browser: true,
-  },
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential'],
-  // required to lint *.vue files
-  plugins: [
-    'vue'
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/essential"
   ],
-  // add your custom rules here
-  rules: {
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "vue"
+  ],
+  "rules": {
+    "eqeqeq": 0,
+    // 不要求使用 === 和 !==
+    "no-mixed-spaces-and-tabs": [2, false],
+    //禁止混用tab和空格
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+    // 双峰驼命名格式
+    "quotes": [1, "single"]
+    //赋值使用单引号
   }
-}
+};
